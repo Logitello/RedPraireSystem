@@ -1,0 +1,34 @@
+						String url = "jdbc:mysql://localhost:3306/redpraire";
+						String username = "root";
+						String password = "Artur162534";
+
+						System.out.println("Connecting database...");
+
+						try (Connection connection = DriverManager.getConnection(url, username, password)) {
+						    System.out.println("Database connected!");
+						    Statement stmt = connection.createStatement();
+						    try {
+						    	ResultSet rs = stmt.executeQuery("SELECT * FROM product");
+						    	
+						    	while(rs.next()) {
+						    		
+						    		System.out.format();
+						    	}
+						    	
+						    	rs.next();
+						    	
+						    } finally {
+						    	stmt.close();
+						    }
+						} catch (SQLException ex) {
+						    throw new IllegalStateException("Cannot connect the database!", ex);
+						}
+						
+						System.out.println("Loading driver...");
+
+						try {
+						    Class.forName("com.mysql.jdbc.Driver");
+						    System.out.println("Driver loaded!");
+						} catch (ClassNotFoundException ex) {
+						    throw new IllegalStateException("Cannot find the driver in the classpath!", ex);
+						}
